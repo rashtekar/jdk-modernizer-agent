@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv/
+.env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE specific files
+.vscode/
+
+# Java related files
+target/
+*.class
+*.jar
