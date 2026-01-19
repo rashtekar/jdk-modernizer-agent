@@ -1,25 +1,25 @@
-JDK Modernizer is a stateful AI agent built with LangGraph and OpenRewrite (OSS) that autonomously migrates legacy Java 17 codebases to JDK 25. Unlike a simple script, it uses a "Refactor-Verify-Correct" loop to ensure the migrated code compiles and passes modern linting standards.
+# 🚀 JDK Modernizer Agent
+**AI-powered autonomous migration from Legacy Java 17 to JDK 25.**
 
-🚀 Problem Statement
+JDK Modernizer is a stateful AI agent that migrates legacy Java codebases using a "Refactor-Verify-Correct" loop. It bridges the gap between technical debt and modern performance by combining the deterministic precision of **OpenRewrite** with the creative reasoning of **Llama 3.3 (via Groq)**.
 
-Legacy Enterprise Java migrations are often stalled due to lack of time, effort and priority. Every major company has some projects which they wished had a magic wand to magically port over to the latest JDK and clear their "technical debt".
+---
 
-Manual refactoring is:
-    1. Error-Prone: Human developers often miss deprecated API edge cases.
-    2. Scale-Limited: Large monorepos require consistent application of recipes across thousands of files.
-    3. Performance-Blind: Legacy concurrency models (Fixed Thread Pools) aren't automatically converted to Virtual Threads, leaving performance gains on the table.
+## 🚀 Problem Statement
+Legacy Enterprise Java migrations are often stalled due to lack of time, effort, and priority. Manual refactoring is:
+1. **Error-Prone**: Developers often miss deprecated API edge cases or complex switch exhaustiveness.
+2. **Scale-Limited**: Large monorepos require consistent application of recipes across thousands of files.
+3. **Performance-Blind**: Legacy concurrency models (Fixed Thread Pools) aren't automatically converted to Virtual Threads, leaving performance gains on the table.
 
-🛠 Approach
+## 🛠 Approach
+We utilize a **Hybrid Intelligence** model:
+* **Deterministic Logic (OpenRewrite)**: Handles bulk, safe transformations using Lossless Semantic Trees (LST) to ensure 100% syntactic integrity for standard migrations (up to Java 21).
+* **Probabilistic Logic (LLM)**: Orchestrates the migration to **JDK 25**, identifies complex refactoring targets (like converting POJOs to Records), and self-corrects compilation errors.
+* **Stateful Orchestration (LangGraph)**: Manages the migration lifecycle, allowing the agent to "backtrack" or retry if a specific refactor breaks the build.
 
-We utilize a Hybrid Intelligence model:
+---
 
-    Deterministic Logic (OpenRewrite): Handles bulk, safe transformations using Lossless Semantic Trees (LST) to ensure 100% syntactic integrity.
-
-    Probabilistic Logic (LLM): Orchestrates the migration, identifies complex refactoring targets (like converting synchronized blocks to ReentrantLocks for Virtual Thread compatibility), and fixes compilation errors.
-
-    Stateful Orchestration (LangGraph): Manages the migration lifecycle, allowing the agent to "backtrack" if a specific refactor breaks the build.
-
-🏗 Architecture Diagram
+## 🏗 Architecture Diagram
 ```mermaid
 graph TD
     A[Legacy Java 17 Code] --> B[Agent Scanner]
@@ -27,12 +27,12 @@ graph TD
     
     subgraph Refactoring_Engine
         C --> D[OpenRewrite Node]
-        D -- "Apply Recipes" --> E[Update Pom.xml / Basic API Migrations]
+        D -- "Java 21 Recipes" --> E[Update Pom.xml / API Cleanup]
     end
 
     subgraph AI_Reasoning
-        E --> F[LLM Refactor Node]
-        F -- "JDK 25 Knowledge" --> G[Complex Logic Refactoring]
+        E --> F[LLM Java 25 Pass]
+        F -- "JDK 25 Knowledge" --> G[Records & Pattern Matching]
     end
 
     G --> H[Verification Node: Maven]
