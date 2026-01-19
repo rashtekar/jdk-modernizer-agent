@@ -1,10 +1,13 @@
 # Python virtual environment
 .venv/
-.env/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# secrets
+.env
+.env.local
 
 # IDE specific files
 .vscode/
